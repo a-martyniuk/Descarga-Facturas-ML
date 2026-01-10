@@ -16,7 +16,7 @@ SCOPES = [
 
 CREDENTIALS_FILE = 'credentials.json'
 TOKEN_FILE = 'token.pickle'
-LOCAL_BASE_FOLDER = r'd:\Google Antigravity\Facturas_Compras'
+LOCAL_BASE_FOLDER = r'D:\Projects\Descarga-Facturas-ML\Facturas_Compras'
 DRIVE_ROOT_FOLDER_NAME = 'Facturas_MercadoLibre'
 DEFAULT_RECIPIENT = "alexis.martyniuk@gmail.com" # Actualizado por el usuario
 

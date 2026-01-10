@@ -5,15 +5,15 @@ import time
 from datetime import datetime
 
 # CONFIGURACIÓN
-APP_ID = "8297816339344135"
+APP_ID = "7178598796886263"
 CLIENT_SECRET = "oOPHDGv6uzRbtXGunlY8heigzOeejXv8"
 REDIRECT_URI = "https://www.google.com/"
 ACCESS_TOKEN = "APP_USR-7178598796886263-010923-5772699097d67e9c31817ac9aeb6f586-51746963" 
 REFRESH_TOKEN = "" # Si tienes un refresh token, ponlo aquí
 
 BASE_URL = "https://api.mercadolibre.com"
-DOWNLOAD_FOLDER = "d:/Google Antigravity/Facturas_Compras"
-TOKEN_FILE = "d:/Google Antigravity/Descarga-Facturas-ML/meli_tokens.json"
+DOWNLOAD_FOLDER = "D:/Projects/Descarga-Facturas-ML/Facturas_Compras"
+TOKEN_FILE = "D:/Projects/Descarga-Facturas-ML/meli_tokens.json"
 
 # Variables globales para los tokens activos
 CURRENT_ACCESS_TOKEN = ACCESS_TOKEN
