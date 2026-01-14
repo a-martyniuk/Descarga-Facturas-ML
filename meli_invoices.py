@@ -5,21 +5,27 @@ import time
 from datetime import datetime
 
 # CONFIGURACION
-APP_ID = "8297816339344135"
-CLIENT_SECRET = "oOPHDGv6uzRbtXGunlY8heigzOeejXv8"
-REDIRECT_URI = "https://www.google.com/"
-# Token inicial (se usara si no hay meli_tokens.json)
-ACCESS_TOKEN = "APP_USR-7178598796886263-010923-5772699097d67e9c31817ac9aeb6f586-51746963" 
-REFRESH_TOKEN = "TG-677ff1990f7a55000109ae94-51746963"
+CONFIG_FILE = r"D:\Projects\Descarga-Facturas-ML\config_meli.json"
+
+def load_config():
+    if os.path.exists(CONFIG_FILE):
+        with open(CONFIG_FILE, 'r') as f:
+            return json.load(f)
+    print("WARNING: config_meli.json no encontrado, por favor creelo.")
+    return {}
+
+config = load_config()
+APP_ID = config.get("app_id", "")
+CLIENT_SECRET = config.get("client_secret", "")
+REDIRECT_URI = config.get("redirect_uri", "https://www.google.com/")
+# Variables globales para los tokens activos
+CURRENT_ACCESS_TOKEN = None
+CURRENT_REFRESH_TOKEN = None
 
 BASE_URL = "https://api.mercadolibre.com"
 DOWNLOAD_FOLDER = r"D:\Projects\Descarga-Facturas-ML\Facturas_Compras"
 TOKEN_FILE = r"D:\Projects\Descarga-Facturas-ML\meli_tokens.json"
 LOG_FILE = r"D:\Projects\Descarga-Facturas-ML\execution.log"
-
-# Variables globales para los tokens activos
-CURRENT_ACCESS_TOKEN = ACCESS_TOKEN
-CURRENT_REFRESH_TOKEN = REFRESH_TOKEN
 
 def log_execution(status, message=""):
     """Guarda un registro de la ejecucion en el archivo de log"""
@@ -54,8 +60,8 @@ def load_tokens():
         try:
             with open(TOKEN_FILE, 'r') as f:
                 data = json.load(f)
-                CURRENT_ACCESS_TOKEN = data.get('access_token', ACCESS_TOKEN)
-                CURRENT_REFRESH_TOKEN = data.get('refresh_token', REFRESH_TOKEN)
+                CURRENT_ACCESS_TOKEN = data.get('access_token')
+                CURRENT_REFRESH_TOKEN = data.get('refresh_token')
         except:
             pass
 
